@@ -1,0 +1,60 @@
+﻿body
+{
+	font: normal 100% Helvetica,Arial,sans-serif;
+	text-align: center;
+	line-height: 200%;
+}
+.headView
+{
+	font-size: 1.5em;
+}
+small
+{
+	font-size: 0.875em;
+}
+.bodyView
+{
+	position: relative;
+	width: 100%;
+	margin: 5px auto;
+}
+.lablName
+{
+	min-width: 100px;
+	width: 130px;
+	text-align: right;
+	float: left;
+	margin-right: 5px;
+}
+.labVla
+{
+	text-align: left;
+	float: left;
+}
+.fontpacel
+{
+	float: left;
+	width: 100%;
+}
+.inputpacel
+{
+	float: left;
+	width: 35%;
+	text-align: left;
+}
+.firstDiv
+{
+	background-color: #C9E5FA;
+}
+.secendDiv
+{
+	background-color: #EEECE1;
+}
+.thridDiv
+{
+	background-color: #C9E5FA;
+}
+.forthDiv
+{
+	background-color: #EEECE1;
+}
