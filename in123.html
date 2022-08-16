@@ -1,0 +1,346 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head><meta name="viewport" content="width=device-width,initial-scale=1" /><title>
+	网签合同信息
+</title>
+    <!--[if lt IE 9]>
+    <script src="static/js/css3mediaqueries.js"></script>
+    <![endif]-->
+    <link rel="Stylesheet" type="text/css" media="screen and (min-width:1044px)" href="static/css/normal.css" /><link href="static/css/medium.css" rel="stylesheet" media="screen and (min-width:731px) and (max-width:1044px)" type="text/css" /><link href="static/css/medium2.css" rel="stylesheet" media="screen and (min-width:400px) and (max-width:731px)" type="text/css" /><link href="static/css/small.css" rel="stylesheet" media="screen and (max-width:400px)" type="text/css" />
+    <script src="static/js/jquery-1.9.1.min.js" type="text/javascript"></script>
+    <script src="static/js/json2.js" type="text/javascript"></script>
+    <script type="text/javascript">
+
+        $(function () {
+            var striid = $("#hidiid").val();
+            if (striid == "") {
+                var roomData = $("#roomInfo").val();
+                var roomcn = $("#hidcn").val();
+                if (roomData != "") {
+                    roomData = JSON.parse(roomData);
+                }
+                if (roomData == "") {
+                    $("#form1").html("信息正在同步中，请明天再试");
+                    return;
+                }
+                var data = roomData;
+                var labs;
+                if (roomcn == "0") {
+                    $("#htcxdiv").show();
+                    labs = $("#htcxdiv").find("label[field]");
+                }
+                else {
+                    $("#fwxxdiv").show();
+                    labs = $("#fwxxdiv").find("label[field]");
+                }
+                labs.each(function (i, col) {
+                    var fname = $(col).attr("field").toUpperCase();
+                    if ($("#hiddetailId").val() == "1060130008" || $("#hiddetailId").val() == "1060130019") {
+                        fname = $(col).attr("field");
+                    }
+                    var fval = eval("data." + fname);
+                    if (fval != "") {
+                        $(col).html(fval);
+                    } else {
+                        $(col).html("无");
+                    }
+                });
+                if ($("#hiddetailId").val() == "1060130008" || $("#hiddetailId").val() == "1060130019") {
+                    $("#xkz").hide();
+                }
+            }
+            else {
+                if ($("#hidhouseName").val() == "") {
+                    $("#form1").html("信息正在同步中，请明天再试");
+                    return;
+                }
+                var houselist = new Array();
+                houselist = $("#hidhouseName").val().split(",");
+                var houseIdlist = new Array();
+                houseIdlist = $("#hidhouseId").val().split(",");
+                var ret = "";
+                if (houselist.length == houseIdlist.length) {
+
+                    for (var i = 0; i < houselist.length; i++) {
+                        if (houselist[i] != "") {
+
+                            ret += "<a style='color: blue; font-weight: bold; margin-right: 10px;' href='../../HtmlPage/ShowRooms.html?buildingid=" + houseIdlist[i] + "' target='_blank'>" + houselist[i] + "</a>";
+                        }
+                    }
+                }
+                $("#ysldlb").html(ret);
+                $("#htcxdiv").hide();
+                $("#fwxxdiv").hide();
+                $("#ysxkdiv").show();
+            }
+        });
+    </script>
+
+    <style type="text/css">
+        .setUl {
+        }
+
+            .setUl li {
+                float: left;
+            }
+
+        .f_size {
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body align="center">
+    <form method="post" action="./MobileHouseInfo.aspx?contactno=169B5F20C0E86308D9F28FA8EA602F08&amp;owner=855D666646AB906B&amp;cn=0&amp;sn=CQ-104-03187986" id="form1">
+<div class="aspNetHidden">
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="yDvcfVR5EAVkjV0un5g+d2U4oqcDBPK7k9r3yitZLEeoK6gvb/EE9Rc+2gM23zgxwMNQPycFYjPXlqv/75OB2acwKLtAuEoxuzJrqzCul0pLUAm4oL1bL6QuSSbQpCCcc7fwXA==" />
+</div>
+
+<div class="aspNetHidden">
+
+	<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="D19A26A6" />
+	<input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="8c+yUWCYkxefmVv4CuLPrzAMpq+VsPt+Tqk+WD5ziDXqq3eDY96KkO2svGyThZt2fqjUsdmPazbXeKZDPhTSkknOKh+xlrA/qHmTzmE/z4WC2zVTxRcsd+kQBtbUdvtirTDv5shmOZiSAQCdFya7Svk2GKR+v+/VLyMb5Xz/0fxzczkgLesvjoU3ttLt3rsaFRh8e2mUxNsOCSExmq/wjJ9tl9/cYMEAL0fOc3YcVeFLkPERxRR78iM/VgvKGgu3RNu6hg==" />
+</div>
+        <div id="htcxdiv" style="display: none;">
+            <div class="headView">
+                欢迎使用重庆网上房地产网签合同查询
+            </div>
+            <div class="bodyView">
+                <div class="fontpacel firstDiv">
+                    <label class="lablName">
+                        合同编号：</label>
+                    <label field="F_SIGN_NO" class="labVla">
+                        4-1302</label>
+                </div>
+                <div class="fontpacel secendDiv">
+                    <label class="lablName">
+                        业务编号：</label>
+                    <label field="F_SERIAL" class="labVla">
+                        201309138000441</label>
+                </div>
+                <div class="fontpacel firstDiv">
+                    <label class="lablName">
+                        总价：</label>
+                    <label field="F_TOTAL" class="labVla">
+                        1903507</label>
+                </div>
+                <div class="fontpacel secendDiv">
+                    <label class="lablName">
+                        合同签订日期：</label>
+                    <label field="F_SIGN_DATE" class="labVla">
+                        2013/09/13</label>
+                </div>
+                <div class="fontpacel firstDiv">
+                    <label class="lablName">
+                        项目名称：</label>
+                    <label field="F_PROJECT_NAME" class="labVla">
+                        雍江翠璟</label>
+                </div>
+                <div class="fontpacel secendDiv">
+                    <label class="lablName">
+                        房屋坐落：</label>
+                    <label field="F_LOCATION" class="labVla">
+                        渝中区富华路29号4幢13-2#</label>
+                </div>
+                <div class="fontpacel firstDiv">
+                    <label class="lablName">
+                        出卖人：</label>
+                    <label field="F_OLD_OWNER" class="labVla">
+                        重庆瑞安天地房地产发展有限公司</label>
+                </div>
+                <div class="fontpacel secendDiv">
+                    <label class="lablName">
+                        代理人姓名：</label>
+                    <label field="F_AGENT_NAME" class="labVla">
+                        无</label>
+                </div>
+                <div class="fontpacel firstDiv">
+                    <label class="lablName">
+                        代理人证件类型：</label>
+                    <label field="F_AGENT_CARDTYPE" class="labVla">
+                        无</label>
+                </div>
+                <div class="fontpacel secendDiv">
+                    <label class="lablName">
+                        代理人证件号码：</label>
+                    <label field="F_AGENT_CARDNO" class="labVla">
+                        无</label>
+                </div>
+                <div class="fontpacel firstDiv">
+                    <label class="lablName">
+                        买受人：</label>
+                    <label field="F_OWNER" class="labVla">
+                        蒋曦</label>
+                </div>
+                <div class="fontpacel secendDiv">
+                    <label class="lablName">
+                        买受人证件类型：</label>
+                    <label field="F_CARD_TYPE" class="labVla">
+                        身份证</label>
+                </div>
+                <div class="fontpacel firstDiv">
+                    <label class="lablName">
+                        买方证件号码：</label>
+                    <label field="F_CARD_NO" class="labVla">
+                        500226198501252417</label>
+                </div>
+                <div class="fontpacel secendDiv">
+                    <label class="lablName">
+                        建筑面积：</label>
+                    <label field="F_BUILD_AREA" class="labVla">
+                        156.58:</label>
+                </div>
+                <div class="fontpacel firstDiv">
+                    <label class="lablName">
+                        套内面积：</label>
+                    <label field="F_INSIDE_AREA" class="labVla">
+                        135.40</label>
+                </div>
+                <div class="fontpacel secendDiv">
+                    <label class="lablName">
+                        分摊面积：</label>
+                    <label field="F_SHARE_AREA" class="labVla">
+                        21.18</label>
+                </div>
+                <div class="fontpacel firstDiv">
+                    <label class="lablName">
+                        户型：</label>
+                    <label field="F_ROOM_TYPE" class="labVla">
+                        四室二厅</label>
+                </div>
+                <div class="fontpacel secendDiv">
+                    <label class="lablName">
+                        用途：</label>
+                    <label field="F_USE" class="labVla">
+                        成套住宅</label>
+                </div>
+                <div class="fontpacel secendDiv">
+                    <label class="lablName">
+                        成交金额：</label>
+                    <label field="F_TOTAL" class="labVla">
+                    </label>
+                </div>
+                <div class="fontpacel secendDiv">
+                    <label class="lablName">
+                        预售许可证：</label>
+                    <label field="F_PRESALE_CERT" class="labVla">
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div id="fwxxdiv" style="display: none;">
+            <div class="headView">
+                欢迎使用重庆网上房地产网签房屋信息查询
+            </div>
+            <div class="bodyView">
+                <div class="fontpacel firstDiv">
+                    <label class="lablName">
+                        房号：</label>
+                    <label field="rn" class="labVla">
+                    </label>
+                </div>
+                <div class="fontpacel secendDiv">
+                    <label class="lablName">
+                        楼号：</label>
+                    <label field="block" class="labVla">
+                    </label>
+                </div>
+                <div class="fontpacel firstDiv">
+                    <label class="lablName">
+                        套内面积(平方米)：</label>
+                    <label field="iArea" class="labVla">
+                    </label>
+                </div>
+                <div class="fontpacel secendDiv">
+                    <label class="lablName">
+                        建筑面积(平方米)：</label>
+                    <label field="bArea" class="labVla">
+                    </label>
+                </div>
+                <div class="fontpacel firstDiv">
+                    <label class="lablName">
+                        使用用途：
+                    </label>
+                    <label field="use" class="labVla">
+                    </label>
+                </div>
+                <div class="fontpacel secendDiv">
+                    <label class="lablName">
+                        户型：</label>
+                    <label field="rType" class="labVla">
+                    </label>
+                </div>
+                <div class="fontpacel firstDiv">
+                    <label class="lablName">
+                        成交金额(元)：</label>
+                    <label field="F_Total" class="labVla">
+                    </label>
+                </div>
+                <div id="xkz" class="fontpacel firstDiv">
+                    <label class="lablName">
+                        预售许可证：</label>
+                    <label field="F_PRESALE_CERT" class="labVla">
+                    </label>
+                </div>
+                <!--
+            <div class="fontpacel secendDiv">
+                <label class="lablName">
+                    建筑结构：</label>
+                <label field="stru" class="labVla">
+                </label>
+            </div>
+            <div class="fontpacel firstDiv">
+                <label class="lablName">
+                    签约情况：</label>
+                <label field="S_ISONLINESIGN" class="labVla">
+                </label>
+            </div>
+            <div class="fontpacel secendDiv">
+                <label class="lablName">
+                    房屋状态：</label>
+                <label field="S_ISOWNERSHIP" class="labVla">
+                </label>
+            </div>
+            -->
+            </div>
+        </div>
+        <div id="ysxkdiv" style="display: none;">
+            <div class="headView" style="font-size: 16px; font-weight: 600;">
+                重庆市商品房预售（预租）许可证
+            </div>
+            <div class="headView f_size">
+                
+            </div>
+            <div class="bodyView">
+                <div class="fontpacel firstDiv f_size">
+                    <label class="lablName">
+                        售房企业名称：</label>
+                    <label class="labVla">
+                        
+                    </label>
+                </div>
+                <div class="fontpacel secendDiv f_size">
+                    <label class="lablName">
+                        规划批准的项目名称：</label>
+                    <label class="labVla">
+                        
+                    </label>
+                </div>
+                <div class="fontpacel secendDiv f_size">
+                    <label class="lablName">
+                        预售楼栋：</label>
+                    <label class="labVla" id="ysldlb">
+                    </label>
+                </div>
+            </div>
+        </div>
+        <input type="hidden" name="hidcn" id="hidcn" value="0" />
+        <input type="hidden" name="hidiid" id="hidiid" />
+        <input type="hidden" name="roomInfo" id="roomInfo" value="{&quot;F_SIGN_NO&quot;:&quot;CQ-104-03187986&quot;,&quot;F_SERIAL&quot;:&quot;202207069000521&quot;,&quot;F_TOTAL&quot;:768153,&quot;F_SIGN_DATE&quot;:&quot;2022-07-06 11:43:04&quot;,&quot;F_PROJECT_NAME&quot;:&quot;鲁能城中央公馆&quot;,&quot;F_LOCATION&quot;:&quot;渝北区和庆路7号3-13&quot;,&quot;F_OLD_OWNER&quot;:&quot;重庆鲁能开发(集团)有限公司&quot;,&quot;F_AGENT_NAME&quot;:&quot;无&quot;,&quot;F_AGENT_CARDTYPE&quot;:null,&quot;F_AGENT_CARDNO&quot;:&quot;&quot;,&quot;F_OWNER&quot;:&quot;王*荣&quot;,&quot;F_CARD_TYPE&quot;:&quot;身份证&quot;,&quot;F_CARD_NO&quot;:&quot;422202********0840&quot;,&quot;F_BUILD_AREA&quot;:104.60,&quot;F_INSIDE_AREA&quot;:86.03,&quot;F_SHARE_AREA&quot;:18.57,&quot;F_ROOM_TYPE&quot;:&quot;三室二厅&quot;,&quot;F_USE&quot;:&quot;成套住宅&quot;,&quot;F_PRESALE_CERT&quot;:&quot;渝住建委（2019）预字第（2091）号&quot;,&quot;__dataType&quot;:1}" />
+        <input type="hidden" name="hidhouseName" id="hidhouseName" />
+        <input type="hidden" name="hidhouseId" id="hidhouseId" />
+        <input type="hidden" name="hiddetailId" id="hiddetailId" />
+    </form>
+</body>
+</html>
